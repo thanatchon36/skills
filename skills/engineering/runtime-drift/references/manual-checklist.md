@@ -45,7 +45,9 @@ Record each declaration as `file:line`, runtime, role, and raw value.
 - **yaml-number**: an unquoted CI version that YAML turns into a different number (`3.10` becomes
   `3.1`, `1.20` becomes `1.2`). Quote it.
 
-CI versions are checked against ranges only, not against pins. Report moving values (`lts/*`,
+CI versions are checked against ranges only, not against pins. A CI value with a yaml-number
+problem is reported once, as yaml-number, and not also checked against ranges, because its parsed
+value is wrong anyway. verdrift counts problems the same way. Report moving values (`lts/*`,
 `latest`, `${{ ... }}`, an `ARG` without a default) as skipped, with the reason.
 
 ## 3. Report
