@@ -24,6 +24,7 @@
     "./skills/workflow/readme-that-converts",
     "./skills/workflow/launch-kit",
     "./skills/engineering/runtime-drift",
-    "./skills/data-ml/leakage-audit"
+    "./skills/data-ml/leakage-audit",
+    "./skills/meta/ask-thanatchon"
   ]
 }
