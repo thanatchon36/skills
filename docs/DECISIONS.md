@@ -46,3 +46,7 @@ inspect (MISSION.md), and avoids a slogan that promises more than the skills do.
 - **Iterate with `--runs 1 --ablation none`, and run the final suite once with a `--max-cost-usd`
   ceiling.** Every eval run is billed model usage, so the full default (3 runs × 2 arms) is reserved
   for the final pass.
+- **Eval runs paused at the account session limit** (hit 2026-10-12 ~18:15 ICT, resets 22:40 ICT).
+  The `ship-oss` model-graded cases, and all `launch-kit` and `ask-thanatchon` cases, run in one
+  batch after the reset. Authoring, validation, and install tests continue meanwhile, since they
+  need no model calls.

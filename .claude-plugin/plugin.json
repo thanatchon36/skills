@@ -20,6 +20,7 @@
   ],
   "skills": [
     "./skills/workflow/mission-brief",
+    "./skills/workflow/ship-oss",
     "./skills/workflow/readme-that-converts",
     "./skills/engineering/runtime-drift",
     "./skills/data-ml/leakage-audit"
