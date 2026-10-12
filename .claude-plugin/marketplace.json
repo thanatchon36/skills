@@ -1,0 +1,17 @@
+{
+  "name": "thanatchon",
+  "owner": {
+    "name": "Thanatchon Chongmankhong",
+    "url": "https://github.com/thanatchon36"
+  },
+  "description": "Agent skills that take an open-source project from a one-page MISSION.md to a shipped public repo.",
+  "plugins": [
+    {
+      "name": "thanatchon-skills",
+      "source": "./",
+      "description": "Agent skills that take an open-source project from a one-page MISSION.md to a shipped public repo.",
+      "category": "workflow",
+      "keywords": ["agent-skills", "open-source", "readme", "launch"]
+    }
+  ]
+}

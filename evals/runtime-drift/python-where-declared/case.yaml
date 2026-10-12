@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: python-where-declared
+context:
+  scaffold_script: seed.sh

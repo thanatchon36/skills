@@ -1,0 +1,16 @@
+{
+  "name": "thanatchon-skills",
+  "version": "0.1.0",
+  "description": "Agent skills that take an open-source project from a one-page MISSION.md to a shipped public repo.",
+  "author": {
+    "name": "Thanatchon Chongmankhong",
+    "url": "https://github.com/thanatchon36"
+  },
+  "homepage": "https://github.com/thanatchon36/thanatchon-skills",
+  "repository": "https://github.com/thanatchon36/thanatchon-skills",
+  "license": "MIT",
+  "keywords": ["agent-skills", "open-source", "readme", "launch", "runtime-versions", "ml", "data-leakage"],
+  "skills": [
+    "./skills/engineering/runtime-drift"
+  ]
+}
