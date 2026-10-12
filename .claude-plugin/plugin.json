@@ -22,6 +22,7 @@
     "./skills/workflow/mission-brief",
     "./skills/workflow/ship-oss",
     "./skills/workflow/readme-that-converts",
+    "./skills/workflow/launch-kit",
     "./skills/engineering/runtime-drift",
     "./skills/data-ml/leakage-audit"
   ]
