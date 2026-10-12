@@ -19,6 +19,7 @@
     "data-leakage"
   ],
   "skills": [
+    "./skills/workflow/readme-that-converts",
     "./skills/engineering/runtime-drift",
     "./skills/data-ml/leakage-audit"
   ]

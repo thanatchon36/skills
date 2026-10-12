@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: contributing-doc
+context:
+  scaffold_script: seed.sh
