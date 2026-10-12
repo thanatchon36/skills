@@ -21,7 +21,7 @@ HYPE = re.compile(
 )
 INSTALL = re.compile(
     r"\b(npx|npm (i|install)|pnpm (add|dlx)|yarn (add|dlx)|pip install|pipx install|uv (tool|pip|add)|"
-    r"brew install|go install|cargo install|gem install|docker run|git clone|curl|/plugin)\b"
+    r"brew install|go install|cargo install|gem install|docker run|git clone|curl)\b|(^|\s)/plugin "
 )
 SECTIONS = {
     "limitations": re.compile(r"^#{2,3}\s.*(limitation|caveat|known issues|not (yet )?supported)", re.I),

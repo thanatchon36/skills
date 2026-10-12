@@ -1,0 +1,39 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Claude Code
+        run: npm install --global @anthropic-ai/claude-code
+      - name: Validate marketplace and plugin manifests
+        run: |
+          claude plugin validate . --strict
+          claude plugin validate .claude-plugin/plugin.json --strict
+      - name: Lint skill frontmatter and repo invariants
+        run: python3 scripts/lint_frontmatter.py
+      - name: Lint README
+        run: python3 skills/workflow/readme-that-converts/scripts/readme_lint.py README.md
+      - name: Bundled scripts compile
+        run: |
+          python3 -m py_compile skills/*/*/scripts/*.py scripts/*.py
+          bash -n skills/engineering/runtime-drift/scripts/verdrift.sh
+      - name: Check Markdown links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --exclude-path fixtures --exclude-path docs/mission --exclude-path evals --exclude-path skills/workflow/mission-brief/references/mission-template.md --exclude 'https://x.com' --exclude 'https://twitter.com' --exclude 'https://github.com/example-dev' './**/*.md'
+          fail: true
