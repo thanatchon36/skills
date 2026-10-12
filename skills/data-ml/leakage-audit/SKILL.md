@@ -64,9 +64,12 @@ which rows did this fit or aggregate see, and when is this value known? Then mar
 - **suspected**: the code gives a concrete signal of a leak (a post-outcome-sounding name, a join to
   an outcome table, a comment, an aggregate over the label) but the verdict hinges on a fact the code
   can't show, usually whether a value exists at prediction time. Say exactly what to check.
-- **assumption, not a finding**: a plain input column with no such signal. "It might be built
-  from future data upstream" is true of every column, so it is not a finding. Note it at most once,
-  under Assumptions.
+- **assumption, not a finding**: a plain input column with no such signal in this code. "It might
+  be built from future data upstream" is true of every column, so it is not a finding. Domain
+  hunches don't count as signals either ("risk scores are often label-derived"). The signal must be
+  in the code: a post-outcome word in the name (after, post, final, resolved, refund, chargeback,
+  cancel, outcome), a join, or an aggregate you can point to. Note assumptions at most once, under
+  Assumptions.
 - **not a leak**: drop it. Use the catalog's "Not leakage" list.
 
 ### 4. Report

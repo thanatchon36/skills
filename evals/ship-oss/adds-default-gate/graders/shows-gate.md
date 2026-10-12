@@ -1,4 +1,4 @@
 ---
 type: regex
-pattern: 'STOP GATE'
+pattern: 'STOP GATE|Gate A'
 ---
