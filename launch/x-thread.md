@@ -22,7 +22,7 @@ It reports all 4 problems in the fixture, then proposes the smallest fix.
 Its eval: find all 8 leaks planted in a fixture, at the right lines, and report 0 on the fixed
 twin.
 
-5/ eval-harness: before you switch to a cheaper model or rewrite a prompt, it builds an eval set from real inputs, asks before spending API quota, and compares runs case by case.
+5/ eval-harness: before a model switch or prompt rewrite, it builds an eval set from real inputs, asks before spending API quota, and compares runs case by case.
 
 On its fixture, 24/30 → 26/30 looks better, but 3 refund cases regressed and the sign test gives p=0.73.
 
