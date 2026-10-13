@@ -75,7 +75,14 @@ For each problem, decide which side is wrong. The default order of authority is:
 
 Rule-specific guidance:
 
-- `yaml-number`: always quote the value (`'3.10'`). This is never a judgment call.
+- `yaml-number`: always quote the value. This is never a judgment call. If the intended value is
+  also outside the published range (`3.10` against `>=3.11`), that is the same declaration. Keep
+  it in one row and propose the in-range quoted value (`'3.11'`), with both reasons in Why.
+
+One row per declaration. The count is verdrift's problem count. Anything more you notice about a
+declaration verdrift already flagged goes into that row. A problem on a declaration verdrift
+didn't flag gets its own row marked `manual`, and the first line says
+`(verdrift v0.1.0, +<K> manual)`.
 - `outside-range` on a CI matrix entry: the usual fix is to drop the entry, because CI is testing a
   version the project doesn't support. If the range looks stale instead (the bump is the point of
   the task), raise the range, and say which you chose and why.
@@ -101,6 +108,9 @@ an explicit reason (an intentional difference the user confirmed, perhaps with `
 used the manual fallback, repeat the manual pass and say verdrift was not run.
 
 ## Output contract
+
+Start the final message with the `Runtime drift:` line, using the digit count (`4 problems`, not
+"four problems"), then the table:
 
 ```text
 Runtime drift: <N> problems (<verdrift v0.1.0 | manual pass>)

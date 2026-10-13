@@ -1,7 +1,8 @@
 # Eval results
 
-**Status: complete.** 42 of 43 cases passed all 3 runs. One case, `runtime-drift/reports-all-four`,
-passed 1 of 3. The reason is explained under Notes.
+**Status: complete.** At v0.1.0, 42 of 43 cases passed all 3 runs. The exception,
+`runtime-drift/reports-all-four`, passed 1 of 3. It was fixed after v0.2.0 and now passes 5 of 6
+runs (see Notes). `eval-harness`, added in v0.2.0, passes all 7 cases 3/3.
 
 ## Run
 
@@ -94,12 +95,24 @@ with "replaced" as a verb. After the fix, it passed 3/3.
 
 ## Notes
 
-- **`reports-all-four` (1/3):** all 3 runs ran verdrift and reported each of the 4 problems at the
-  right file and line, and none of them edited a file. Two runs failed one grader: their final
-  message didn't contain "4 problems", which the skill's output contract requires in its summary
-  line (`Runtime drift: <N> problems (...)`). The traces weren't kept, so the exact wording is
-  unknown. This is a contract miss, not a wrong finding. The grader was left unchanged, and the
-  miss is an open TODO.
+- **`reports-all-four` (1/3 in the v0.1.0 run; fixed after v0.2.0):** every run reported the 4
+  problems correctly, but the summary line said something other than "4 problems". Kept
+  workspaces from a debug re-run showed why:
+  - Some runs had no `Runtime drift:` line at all.
+  - Some runs counted the `ci.yml:24` value twice: once as `yaml-number`, and again as below
+    `>=3.11`.
+
+  Two fixes in the skill:
+  - The `Runtime drift: <N> problems` line comes first, with N as digits.
+  - One row per declaration, with anything extra about a flagged declaration kept in that row.
+
+  The grader was not changed.
+
+  After the fix, a full `--tag runtime-drift` run passed 5 of 6 cases 3/3, and `reports-all-four`
+  passed 2/3. The failing run got all 4 problems right but failed the `verdrift-output` grader.
+  It answered from the manual checklist instead of verdrift's output, and the workspace wasn't
+  kept, so the cause (network or npx) is unknown. A second run of the case passed 3/3. That makes
+  5 of 6 runs after the fix, and the cost was $2.63 + $0.50.
 - Earlier development runs had real failures. These were fixed in the skill:
   - The `leakage-audit` clean twin was flagged as a suspected leak.
   - The `runtime-drift` manual fallback counted one problem twice.
