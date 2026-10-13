@@ -12,7 +12,7 @@ Thanks for helping. The most useful contributions, in order:
 ## Setup
 
 ```sh
-git clone https://github.com/thanatchon36/thanatchon-skills && cd thanatchon-skills
+git clone https://github.com/thanatchon36/skills && cd skills
 claude plugin validate . --strict
 python3 scripts/lint_frontmatter.py
 ```

@@ -12,14 +12,14 @@
 Claude Code:
 
 ```text
-/plugin marketplace add thanatchon36/thanatchon-skills
+/plugin marketplace add thanatchon36/skills
 /plugin install thanatchon-skills@thanatchon
 ```
 
 agent อื่น ๆ ที่ [skills.sh](https://skills.sh) รองรับ เช่น Cursor, Codex (วิธีนี้จะ copy ไฟล์ skill มาไว้ในโปรเจกต์ให้แก้เองได้):
 
 ```sh
-npx skills@latest add thanatchon36/thanatchon-skills
+npx skills@latest add thanatchon36/skills
 ```
 
 เลือกติดตั้งทางใดทางหนึ่งพอนะครับ ถ้าติดตั้งทั้งสองทาง skill จะขึ้นซ้ำกัน ทั้งสองวิธีทดสอบแล้วเมื่อ 2026-10-12

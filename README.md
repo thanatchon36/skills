@@ -12,7 +12,7 @@ English | [ภาษาไทย](./README.th.md)
 Claude Code:
 
 ```text
-/plugin marketplace add thanatchon36/thanatchon-skills
+/plugin marketplace add thanatchon36/skills
 /plugin install thanatchon-skills@thanatchon
 ```
 
@@ -20,7 +20,7 @@ Any agent supported by [skills.sh](https://skills.sh), including Claude Code, Cu
 others (this copies editable files into your project):
 
 ```sh
-npx skills@latest add thanatchon36/thanatchon-skills
+npx skills@latest add thanatchon36/skills
 ```
 
 Use one route, not both, or you get every skill twice. Both routes were tested on 2026-10-12 from

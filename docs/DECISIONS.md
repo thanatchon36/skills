@@ -50,3 +50,8 @@ inspect (MISSION.md), and avoids a slogan that promises more than the skills do.
   The `ship-oss` model-graded cases, and all `launch-kit` and `ask-thanatchon` cases, run in one
   batch after the reset. Authoring, validation, and install tests continue meanwhile, since they
   need no model calls.
+
+- **Repo name is `thanatchon36/skills`, not `thanatchon36/thanatchon-skills`.** The owner chose the
+  shorter name on 2026-10-13 and created the empty repo. Only the GitHub URL changes: the plugin
+  name stays `thanatchon-skills` and the marketplace stays `thanatchon`, so the install is
+  `/plugin install thanatchon-skills@thanatchon` as before.

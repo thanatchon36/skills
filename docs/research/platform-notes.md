@@ -11,7 +11,7 @@ Facts from current docs and tools, checked 2026-10-12 with Claude Code 2.1.296 a
 - Plugin names may not start with `claude-`, `anthropic-`, `anthropics-`, or `cc-plugin-`, and must
   not use `claude`/`anthropic` as a whole word. `thanatchon-skills` is clean.
 - The marketplace name `thanatchon` is not reserved. For a GitHub source, Claude Code downloads into
-  `<owner>-<repo>` (`thanatchon36-thanatchon-skills`), and that string must not collide with
+  `<owner>-<repo>` (`thanatchon36-skills`), and that string must not collide with
   another registered marketplace's name.
 - `claude plugin validate --strict` turns warnings (missing `version`/`description`/`author`,
   unknown keys) into failures.
