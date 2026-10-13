@@ -23,9 +23,8 @@ others (this copies editable files into your project):
 npx skills@latest add thanatchon36/skills
 ```
 
-Use one route, not both, or you get every skill twice. Both routes were tested on 2026-10-12 from
-a local clone (Claude Code 2.1.296, skills 1.7.2). The GitHub paths above are untested until
-the repo is public.
+Use one route, not both, or you get every skill twice. Both commands above were tested from GitHub
+on 2026-10-13 (Claude Code 2.1.296, skills 1.7.2), and each installs the same 7 skills.
 
 Then, in Claude Code, run `/thanatchon-skills:ask-thanatchon` and describe what you're doing. It
 tells you which skill to use.

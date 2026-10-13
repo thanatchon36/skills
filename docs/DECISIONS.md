@@ -55,3 +55,6 @@ inspect (MISSION.md), and avoids a slogan that promises more than the skills do.
   shorter name on 2026-10-13 and created the empty repo. Only the GitHub URL changes: the plugin
   name stays `thanatchon-skills` and the marketplace stays `thanatchon`, so the install is
   `/plugin install thanatchon-skills@thanatchon` as before.
+
+- **No homepage URL on the GitHub repo.** The brief asks for one, but there is no project site and
+  `author_links` is empty, so there is nothing true to put there. Set it when a site exists.
