@@ -5,11 +5,10 @@ Drafts written by `launch-kit` on 2026-10-13. Nothing here has been posted.
 ## Before posting
 
 - [x] Tag and publish a release (v0.1.0, then v0.2.0 with `eval-harness`).
-- [ ] Update the drafts for 8 skills: they were written for v0.1.0 and don't mention `eval-harness`.
-- [ ] Move a real example onto the README's first screen, or accept that it is below it, and then
-      remove the `NOT READY` lines.
-- [ ] Finish the `runtime-drift` and `ship-oss` evals and update `docs/evals.md`, since the posts
-      point to it.
+- [x] Update the drafts for 8 skills, including `eval-harness`.
+- [x] Put a real example on the README's first screen: the `/ship-oss` stop gate, from a real
+      run, with the full text in `docs/examples/`.
+- [x] Finish the `runtime-drift` and `ship-oss` evals and update `docs/evals.md`.
 - [ ] Upload the social preview (see `social-preview.md`).
 - [ ] TBD: your own handles. No X, LinkedIn, or Reddit handle was given, so none are in the
       drafts.

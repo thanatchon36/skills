@@ -1,11 +1,9 @@
-NOT READY: the README's first screen has no real example (it starts at line 64), and this draft describes the 7 skills of v0.1.0, not the 8 in v0.2.0 (eval-harness is missing). Fix both before posting.
-
 # X thread
 
 1/ Coding agents write the code fine. They skip the rest of shipping: what "done" means, a README
 a stranger can use, the release, the launch.
 
-I wrote 7 agent skills for that part.
+I wrote 8 agent skills for that part.
 https://github.com/thanatchon36/skills
 
 2/ /mission-brief asks one question at a time and writes a MISSION.md with checkable success
@@ -24,7 +22,11 @@ It reports all 4 problems in the fixture, then proposes the smallest fix.
 Its eval: find all 8 leaks planted in a fixture, at the right lines, and report 0 on the fixed
 twin.
 
-5/ Limits: tested only with Claude Code so far. Other agents install via npx skills, untested.
+5/ eval-harness: before you switch to a cheaper model or rewrite a prompt, it builds an eval set from real inputs, asks before spending API quota, and compares runs case by case.
+
+On its fixture, 24/30 → 26/30 looks better, but 3 refund cases regressed and the sign test gives p=0.73.
+
+6/ Limits: tested only with Claude Code so far. Other agents install via npx skills, untested.
 
 Install:
 /plugin marketplace add thanatchon36/skills

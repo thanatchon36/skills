@@ -1,5 +1,3 @@
-NOT READY: the README's first screen has no real example (it starts at line 64), and this draft describes the 7 skills of v0.1.0, not the 8 in v0.2.0 (eval-harness is missing). Fix both before posting.
-
 # กลุ่มนักพัฒนาไทย
 
 ## ที่ที่น่าโพสต์
@@ -15,12 +13,13 @@ coding agent ทุกวันนี้เขียนโค้ดได้ด�
 เช่น ไม่ตรวจก่อนบอกว่าเสร็จ แต่ง output ใส่ README เอง หรือเผลอทำให้ repo เป็น public ก่อนเราจะได้ดู
 (TBD: ใส่ประสบการณ์จริงของคุณเองถ้ามี)
 
-เลยเขียน agent skills ขึ้นมา 7 ตัว ทำเป็น Claude Code plugin
+เลยเขียน agent skills ขึ้นมา 8 ตัว ทำเป็น Claude Code plugin
 
 - `/mission-brief` ถามทีละข้อ แล้วเขียน MISSION.md ที่มี success criteria ตรวจได้จริง
 - `/ship-oss` ทำตาม brief ทีละ phase และจะหยุดรอให้พิมพ์ "go" ก่อนสร้าง repo, push, tag หรือ release
 - `/launch-kit` ร่างโพสต์เปิดตัว (โพสต์นี้ก็ร่างจากตัวนี้) แต่ไม่โพสต์ให้เอง
 - `runtime-drift` หาว่า `.nvmrc`, Dockerfile และ CI ใช้เวอร์ชัน Node/Python/Go ไม่ตรงกันตรงไหน
+- `eval-harness` ก่อนเปลี่ยนโมเดลหรือแก้ prompt จะสร้าง eval set จาก input จริง แล้วเทียบผลทีละ case ว่าอะไรดีขึ้นหรือแย่ลง
 - `leakage-audit` หา data leakage ในโค้ด pandas, scikit-learn, PySpark บอก `file:line` ทุกจุด
 
 ทุก skill มี eval ทั้ง prompt ที่ควรเรียกและที่ต้องไม่เรียก ผลอยู่ใน `docs/evals.md`

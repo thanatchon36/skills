@@ -1,5 +1,3 @@
-NOT READY: the README's first screen has no real example (it starts at line 64), and this draft describes the 7 skills of v0.1.0, not the 8 in v0.2.0 (eval-harness is missing). Fix both before posting.
-
 # Show HN
 
 **Title** (73 chars):
@@ -10,7 +8,7 @@ Show HN: Agent skills that ship an open-source repo from a one-page brief
 
 **First comment (from the author):**
 
-I'm the author. These are seven agent skills, packaged as a Claude Code plugin and installable
+I'm the author. These are eight agent skills, packaged as a Claude Code plugin and installable
 into other agents with `npx skills`. They cover the part of an open-source project that comes after
 the code: deciding what "done" means, writing a README a stranger can act on, cutting a release,
 and drafting the announcement.
@@ -22,7 +20,9 @@ user-invoked skills form a flow. /mission-brief interviews you one question at a
 MISSION.md. /ship-oss executes it phase by phase and stops for an explicit "go" before creating a
 repo, pushing, tagging, or releasing. /launch-kit drafts posts like this one and never posts them.
 
-Three skills work on their own. runtime-drift runs verdrift (another project of mine, pinned to
+Four skills work on their own. eval-harness builds a JSONL eval set from your real inputs before
+you switch models or rewrite a prompt, then compares the two runs case by case. It reports which
+cases flipped and a sign test, not just the totals. runtime-drift runs verdrift (another project of mine, pinned to
 v0.1.0, and it says so before running) to find disagreeing Node, Python, and Go versions.
 leakage-audit checks pandas, scikit-learn, and PySpark code for data leakage, with file:line for
 each finding. readme-that-converts writes or reviews READMEs and ships a lint script.

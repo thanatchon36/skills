@@ -23,10 +23,34 @@ npx skills@latest add thanatchon36/skills
 ```
 
 เลือกติดตั้งทางใดทางหนึ่งพอนะครับ ถ้าติดตั้งทั้งสองทาง skill จะขึ้นซ้ำกัน ทั้งสองคำสั่งด้านบนทดสอบติดตั้งจาก GitHub
-แล้วเมื่อ 2026-10-13 (Claude Code 2.1.296, skills 1.7.2) ได้ skill ครบ 7 ตัวเหมือนกัน
+แล้วเมื่อ 2026-10-13 (Claude Code 2.1.296, skills 1.7.2) ได้ skill ครบ 8 ตัวเหมือนกัน
 
-ติดตั้งแล้วลองพิมพ์ `/thanatchon-skills:ask-thanatchon` ใน Claude Code แล้วเล่าว่ากำลังทำอะไรอยู่
-มันจะแนะนำว่าควรใช้ skill ไหน
+## หน้าตาเวลาใช้งาน
+
+`/ship-oss MISSION.md` จะสร้างโปรเจกต์และเขียน docs ตาม brief แล้วหยุดก่อนทำอะไรที่เป็นสาธารณะ
+ตัวอย่างด้านล่างตัดมาจากข้อความสุดท้ายของการรันจริงกับ [brief เล็ก ๆ](./fixtures/ship-oss/tiny-mission/MISSION.md)
+([ข้อความเต็ม](./docs/examples/ship-oss-stop-gate.md)):
+
+```text
+STOP GATE A: create the public repo example-dev/mdcount, push main, tag v0.1.0
+
+Repo:        example-dev/mdcount
+Visibility:  public
+Description: Count words in Markdown files, skipping fenced code blocks and YAML front matter.
+...
+Secrets scan (every file to be pushed): "no obvious secrets"
+
+Commands that will run on "go" (after the three local commits above):
+  gh repo create example-dev/mdcount --public --source . --remote origin \
+    --description "Count words in Markdown files, skipping fenced code blocks and YAML front matter."
+  git push -u origin main
+  git tag -a v0.1.0 -m "mdcount 0.1.0"
+  git push origin v0.1.0
+
+Reply "go" to run exactly these, or tell me what to change.
+```
+
+ไม่แน่ใจว่าควรเริ่มจากตัวไหน? ลองพิมพ์ `/thanatchon-skills:ask-thanatchon` ใน Claude Code แล้วเล่าว่ากำลังทำอะไรอยู่
 
 ## ทำไมต้องมี
 

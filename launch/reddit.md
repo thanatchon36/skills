@@ -1,5 +1,3 @@
-NOT READY: the README's first screen has no real example (it starts at line 64), and this draft describes the 7 skills of v0.1.0, not the 8 in v0.2.0 (eval-harness is missing). Fix both before posting.
-
 # Reddit
 
 Post to one subreddit at a time, a day or more apart. Read each sidebar first. Self-promotion
@@ -12,11 +10,11 @@ rules change and differ between communities.
 - **Title:** I wrote Claude Code skills that stop before anything goes public (MIT)
 - **Post:**
 
-  I'm the author. This is a plugin with 7 skills for the non-code half of an open-source project.
+  I'm the author. This is a plugin with 8 skills for the non-code half of an open-source project.
   /mission-brief writes a MISSION.md through an interview, /ship-oss executes it and stops for
   "go" before creating a repo, pushing, tagging, or releasing, and /launch-kit drafts posts and
-  never posts. There are also three standalone skills: README writing, runtime-version drift, and
-  ML data leakage.
+  never posts. There are also four standalone skills: README writing, runtime-version drift, ML data
+  leakage, and LLM eval sets (compare a prompt or model change against a baseline, case by case).
 
   Install: `/plugin marketplace add thanatchon36/skills`, then
   `/plugin install thanatchon-skills@thanatchon`.

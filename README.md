@@ -23,11 +23,36 @@ others (this copies editable files into your project):
 npx skills@latest add thanatchon36/skills
 ```
 
-Use one route, not both, or you get every skill twice. Both commands above were tested from GitHub
-on 2026-10-13 (Claude Code 2.1.296, skills 1.7.2), and each installs the same 7 skills.
+Use one route, not both, or you get every skill twice. Both were tested from GitHub on 2026-10-13
+(Claude Code 2.1.296, skills 1.7.2), and each installs the same 8 skills.
 
-Then, in Claude Code, run `/thanatchon-skills:ask-thanatchon` and describe what you're doing. It
-tells you which skill to use.
+## What it looks like
+
+`/ship-oss MISSION.md` builds and documents the project in a brief, then stops before anything is
+public. Here is an excerpt of its final message from a real run on
+[a small brief](./fixtures/ship-oss/tiny-mission/MISSION.md) ([full text](./docs/examples/ship-oss-stop-gate.md)):
+
+```text
+STOP GATE A: create the public repo example-dev/mdcount, push main, tag v0.1.0
+
+Repo:        example-dev/mdcount
+Visibility:  public
+Description: Count words in Markdown files, skipping fenced code blocks and YAML front matter.
+...
+Secrets scan (every file to be pushed): "no obvious secrets"
+
+Commands that will run on "go" (after the three local commits above):
+  gh repo create example-dev/mdcount --public --source . --remote origin \
+    --description "Count words in Markdown files, skipping fenced code blocks and YAML front matter."
+  git push -u origin main
+  git tag -a v0.1.0 -m "mdcount 0.1.0"
+  git push origin v0.1.0
+
+Reply "go" to run exactly these, or tell me what to change.
+```
+
+Not sure where to start? In Claude Code, run `/thanatchon-skills:ask-thanatchon` and describe
+what you're doing.
 
 ## The problem
 
