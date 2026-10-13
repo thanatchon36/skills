@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 (2026-10-13)
 
 - `eval-harness`: build a labeled JSONL eval set for an LLM or RAG feature, check that the graders
   can fail, run a baseline after the user approves the API calls, and compare a change case by

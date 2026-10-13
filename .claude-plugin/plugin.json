@@ -1,6 +1,6 @@
 {
   "name": "thanatchon-skills",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Agent skills that take an open-source project from a one-page MISSION.md to a shipped public repo.",
   "author": {
     "name": "Thanatchon Chongmankhong",

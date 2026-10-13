@@ -1,4 +1,4 @@
-NOT READY: no v0.1.0 release yet, and the README's first screen has no real example (it starts at line 64). Post after both are fixed.
+NOT READY: the README's first screen has no real example (it starts at line 64), and this draft describes the 7 skills of v0.1.0, not the 8 in v0.2.0 (eval-harness is missing). Fix both before posting.
 
 # กลุ่มนักพัฒนาไทย
 
