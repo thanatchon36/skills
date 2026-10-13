@@ -1,22 +1,21 @@
 # Eval results
 
-**Status: partial.** Five of the seven skills have a complete run. `runtime-drift` and `ship-oss`
-are being re-run because most of their runs hit the account's session limit, and this page will be
-updated with those results.
+**Status: complete.** 42 of 43 cases passed all 3 runs. One case, `runtime-drift/reports-all-four`,
+passed 1 of 3. The reason is explained under Notes.
 
 ## Run
 
 | | |
 | --- | --- |
-| Date | 2026-10-13 |
+| Date | 2026-10-13, in two runs: all skills, then `runtime-drift` and `ship-oss` again with `--tag`, because their first runs hit the account's session limit |
 | Claude Code | 2.1.296 |
 | Command | `claude plugin eval . --runs 3 --ablation none --scaffold -j 6 --allow-tools Bash Write Edit "WebFetch(domain:github.com)" "WebFetch(domain:codeload.github.com)" "WebFetch(domain:registry.npmjs.org)" --trust-plugin --no-publish` |
 | Runs per case | 3, with-skill arm only (`--ablation none`, so there is no baseline comparison) |
 | Pass rule | Every grader passes (threshold 1.0) |
-| Cost | $15.86 for the whole run, including the runs that hit the session limit |
+| Cost | $22.41 in total ($15.86 + $6.55), including the runs that hit the session limit |
 
-A run that ended with "You've hit your session limit" is counted below as **not run**, not as a
-fail or a pass.
+Runs that ended with "You've hit your session limit" are left out of this page. Every case has 3
+complete runs.
 
 ## Results
 
@@ -55,14 +54,25 @@ fail or a pass.
 | readme-that-converts | contributing-doc | near-miss | 3/3 |
 | runtime-drift | concept-question | near-miss | 3/3 |
 | runtime-drift | library-upgrade | near-miss | 3/3 |
-| runtime-drift | node-bump-applied | trigger | 1/1 (2 not run) |
-| runtime-drift | python-where-declared | trigger | 1/1 (2 not run) |
-| runtime-drift | reports-all-four | trigger | not run |
-| runtime-drift | release-version | near-miss | not run |
-| ship-oss | all 6 cases | | not run |
+| runtime-drift | node-bump-applied | trigger | 3/3 |
+| runtime-drift | python-where-declared | trigger | 3/3 |
+| runtime-drift | reports-all-four | trigger | **1/3** |
+| runtime-drift | release-version | near-miss | 3/3 |
+| ship-oss | adds-default-gate | trigger | 3/3 |
+| ship-oss | builds-then-stops-at-gate | trigger | 3/3 |
+| ship-oss | no-mission | trigger | 3/3 |
+| ship-oss | ci-workflow | near-miss | 3/3 |
+| ship-oss | oss-checklist-question | near-miss | 3/3 |
+| ship-oss | semver-question | near-miss | 3/3 |
 
 ## Notes
 
+- **`reports-all-four` (1/3):** all 3 runs ran verdrift and reported each of the 4 problems at the
+  right file and line, and none of them edited a file. Two runs failed one grader: their final
+  message didn't contain "4 problems", which the skill's output contract requires in its summary
+  line (`Runtime drift: <N> problems (...)`). The traces weren't kept, so the exact wording is
+  unknown. This is a contract miss, not a wrong finding. The grader was left unchanged, and the
+  miss is an open TODO.
 - Earlier development runs had real failures. These were fixed in the skill:
   - The `leakage-audit` clean twin was flagged as a suspected leak.
   - The `runtime-drift` manual fallback counted one problem twice.
