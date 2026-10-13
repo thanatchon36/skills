@@ -65,6 +65,33 @@ complete runs.
 | ship-oss | oss-checklist-question | near-miss | 3/3 |
 | ship-oss | semver-question | near-miss | 3/3 |
 
+## eval-harness (after v0.1.0)
+
+Run on 2026-10-13 with the same command plus `--tag eval-harness --tag ask-thanatchon --keep-temp`,
+3 runs per case. That run cost $7.49, and the `build-from-logs` re-run cost $3.39. All 7
+`ask-thanatchon` cases passed 3/3 again after the router gained the new skill.
+
+| Skill | Case | Kind | Passed |
+| --- | --- | --- | --- |
+| eval-harness | compare-results | trigger | 3/3 |
+| eval-harness | build-from-logs | trigger | 3/3 (after a fix; 0/3 before) |
+| eval-harness | rag-chunking | trigger | 3/3 |
+| eval-harness | unit-tests | near-miss | 3/3 |
+| eval-harness | sklearn-metrics | near-miss | 3/3 |
+| eval-harness | latency-script | near-miss | 3/3 |
+| eval-harness | metric-concept | near-miss | 3/3 |
+
+`build-from-logs` failed 3/3 on the first run:
+
+- Two runs left out the output contract block.
+- No run said in its report that it had replaced the card number in the logs, although every run
+  did replace it (with the public test number `4111 1111 1111 1111`, checked in the kept
+  workspaces).
+
+The fix was in the skill: the contract block is now required at the top of the final message,
+with a new `Redacted:` line. The redaction grader was widened to accept that new line, along
+with "replaced" as a verb. After the fix, it passed 3/3.
+
 ## Notes
 
 - **`reports-all-four` (1/3):** all 3 runs ran verdrift and reported each of the 4 problems at the

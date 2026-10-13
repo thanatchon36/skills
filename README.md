@@ -59,6 +59,7 @@ These fire on their own when the task matches, or you can ask for them by name.
 | People star the repo but never try it | [`readme-that-converts`](./skills/workflow/readme-that-converts/SKILL.md) | Writes or reviews a README: the problem in the first sentence, the install on the first screen, real output from a real run, and limitations. Ships a lint script. |
 | `.nvmrc` says 22, the Dockerfile says 20, CI tests 18 | [`runtime-drift`](./skills/engineering/runtime-drift/SKILL.md) | Runs [verdrift](https://github.com/thanatchon36/verdrift) (pinned to v0.1.0, and it tells you before it runs) and proposes the smallest set of edits. Falls back to a manual checklist without Node 22 or network. |
 | A model scores 0.99 offline and falls apart in production | [`leakage-audit`](./skills/data-ml/leakage-audit/SKILL.md) | Checks pandas, scikit-learn, and PySpark code for target leakage, temporal leakage, train/test contamination, and preprocessing fit on the full data. Each finding gets a `file:line`. |
+| You're about to switch models or rewrite a prompt, and the only test is trying a few inputs | [`eval-harness`](./skills/data-ml/eval-harness/SKILL.md) | Builds a JSONL eval set from your real inputs and known failures, checks that the graders can fail, runs a baseline (after you say yes to the API calls), and compares the change case by case, with flips and a sign test. |
 | You don't remember which skill fits | [`/ask-thanatchon`](./skills/meta/ask-thanatchon/SKILL.md) | A router over the skills above, and it says when you don't need one. |
 
 ## Example: `runtime-drift` on a drifted repo
@@ -89,6 +90,8 @@ is checkable, the graders check it:
 - `readme-that-converts` must put real output from the fixture project in the README.
 - `ship-oss` must build a small brief and stop at the gate without running `git push` or
   `gh repo create`.
+- `eval-harness` must compare two fixture runs, report 24/30 vs 26/30, name the 3 regressed cases,
+  and not recommend shipping.
 
 Run the suite yourself (it uses your model quota):
 
@@ -126,15 +129,18 @@ The latest results are in [`docs/evals.md`](./docs/evals.md).
   network access for the deterministic path.
 - `leakage-audit` reads code statically. It can't see leaks in upstream SQL, feature stores, or
   notebooks you don't give it, and it says so rather than calling those clean.
+- `eval-harness` writes the runner around your own entry point and asks before spending API quota.
+  Without credentials, it stops before the baseline and says so. Its sign test assumes pass/fail
+  results, not scores.
 - `ship-oss` publishes to GitHub. Other forges and package registries are handled only as far as
   the brief and your tools allow.
 - Eval scores come from a small number of runs and vary between runs. See `docs/evals.md`.
 
 ## Roadmap
 
-Drafts in [`skills/in-progress/`](./skills/in-progress/) (not shipped): `eval-harness` (build an LLM
-or RAG eval set before changing prompts or models), `rag-triage` (retrieval vs ranking vs generation
-failures), `backtest-honesty` (look-ahead bias, survivorship, costs), and `model-card`.
+Drafts in [`skills/in-progress/`](./skills/in-progress/) (not shipped): `rag-triage` (retrieval vs
+ranking vs generation failures), `backtest-honesty` (look-ahead bias, survivorship, costs), and
+`model-card`.
 
 ## Contributing
 

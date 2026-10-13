@@ -58,3 +58,22 @@ inspect (MISSION.md), and avoids a slogan that promises more than the skills do.
 
 - **No homepage URL on the GitHub repo.** The brief asks for one, but there is no project site and
   `author_links` is empty, so there is nothing true to put there. Set it when a site exists.
+
+## eval-harness (2026-10-13)
+
+The draft's three open questions, and how they were settled:
+
+- **Where cases come from with no logs.** Use known failures first, then synthetic cases for the
+  gaps, each marked `source: synthetic`, and say in the report that there were no logs.
+  `evalset.py check` warns when every case is synthetic. Real inputs always come first when they
+  exist.
+- **Default graders and judge cost.** Use deterministic graders first (exact match, contains or
+  regex, schema, code). Use an LLM judge only for what those can't decide: one pass/fail criterion
+  per call, calibrated against about 10 hand-labeled outputs. The skill states the call count and
+  waits for a yes before spending the user's quota.
+- **Storage.** JSONL, one case per line, with `id`, `input`, `expected` or `criteria`, `source`,
+  and `tags`. Results use the same ids, so `compare` can refuse two runs over different cases.
+- **Significance.** `compare` reports an exact two-sided sign test on the flipped cases. It's the
+  simplest test that fits paired pass/fail results, and it needs nothing outside the standard
+  library. The skill treats p > 0.05 with no must-not-regress movement as "inconclusive".
+- **Bucket.** `data-ml`, next to `leakage-audit`.

@@ -45,6 +45,9 @@ Already have a brief? Skip to step 2. Already shipped? Skip to step 3.
 - **`leakage-audit`**: when ML training code (pandas, scikit-learn, PySpark) scores too well
   offline, or before you trust a metric. Checks for target leakage, temporal leakage, train/test
   contamination, and preprocessing fit on the full dataset, with `file:line` for each finding.
+- **`eval-harness`**: before switching an LLM model, rewriting a prompt, or changing RAG retrieval
+  or chunking. Builds an eval set from real inputs, runs a baseline (after you approve the API
+  calls), and compares the change case by case. Also compares two existing result files.
 
 ## Common situations
 
@@ -56,6 +59,7 @@ Already have a brief? Skip to step 2. Already shipped? Skip to step 3.
 | "I'm about to post my project" | `/launch-kit` (check the repo installs from public first) |
 | "Bumping Node/Python/Go", or "CI and Docker run different versions" | `runtime-drift` |
 | "My model's validation score is suspiciously high" | `leakage-audit` |
+| "Is the new prompt / cheaper model / new chunking any worse?" | `eval-harness` |
 | A single feature or bug fix in an existing repo | none. Just ask for the change directly |
 
 ## Rules

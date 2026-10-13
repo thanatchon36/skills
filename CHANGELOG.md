@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- `eval-harness`: build a labeled JSONL eval set for an LLM or RAG feature, check that the graders
+  can fail, run a baseline after the user approves the API calls, and compare a change case by
+  case (`scripts/evalset.py` checks the set and compares runs, with flips and a sign test). Moved
+  from `skills/in-progress/`.
+
 ## 0.1.0 (2026-10-13)
 
 First release. Seven skills:

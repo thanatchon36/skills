@@ -58,6 +58,7 @@ agent จะเรียกใช้เองเมื่องานตรง�
 | คนกด star แต่ไม่มีใครลองใช้จริง | [`readme-that-converts`](./skills/workflow/readme-that-converts/SKILL.md) | เขียนหรือรีวิว README ให้ประโยคแรกบอกปัญหา คำสั่งติดตั้งอยู่หน้าแรก มี output จริงจากการรันจริง และบอกข้อจำกัด พร้อม lint script |
 | `.nvmrc` บอก 22, Dockerfile ใช้ 20, CI ยังเทสต์ 18 | [`runtime-drift`](./skills/engineering/runtime-drift/SKILL.md) | รัน [verdrift](https://github.com/thanatchon36/verdrift) (ล็อกเวอร์ชัน v0.1.0 และบอกก่อนรันทุกครั้ง) แล้วเสนอการแก้ที่น้อยที่สุด ถ้าไม่มี Node 22 หรือไม่มีเน็ต จะตรวจเองตาม checklist แทน |
 | โมเดลได้ 0.99 ตอน offline แต่พังบน production | [`leakage-audit`](./skills/data-ml/leakage-audit/SKILL.md) | ตรวจโค้ด pandas, scikit-learn, PySpark หา target leakage, temporal leakage, train/test ปนกัน และ preprocessing ที่ fit กับข้อมูลทั้งชุด ทุก finding มี `file:line` |
+| กำลังจะเปลี่ยนโมเดลหรือแก้ prompt แต่ทดสอบแค่ลองพิมพ์ไม่กี่ข้อ | [`eval-harness`](./skills/data-ml/eval-harness/SKILL.md) | สร้าง eval set แบบ JSONL จาก input จริงและเคสที่เคยพัง ตรวจว่า grader สอบตกได้จริง รัน baseline (หลังเราอนุญาตให้เรียก API) แล้วเทียบผลทีละ case พร้อมบอกว่า case ไหนเปลี่ยนจากผ่านเป็นตกหรือกลับกัน และค่า sign test |
 | จำไม่ได้ว่าควรใช้ตัวไหน | [`/ask-thanatchon`](./skills/meta/ask-thanatchon/SKILL.md) | ช่วยเลือก skill ที่เหมาะ และบอกตรง ๆ ถ้างานนั้นไม่ต้องใช้ skill เลย |
 
 ## ตัวอย่าง: `runtime-drift` กับ repo ที่เวอร์ชันไม่ตรงกัน
@@ -93,11 +94,12 @@ agent จะเรียกใช้เองเมื่องานตรง�
 - ทดสอบกับ Claude Code เท่านั้น ติดตั้งลง agent อื่นผ่าน `npx skills` ได้ แต่ยังไม่ได้ทดสอบ
 - `runtime-drift` รองรับแค่ Node, Python และ Go ตาม scope ของ verdrift และต้องมี Node 22 ขึ้นไปพร้อมเน็ต
 - `leakage-audit` อ่านโค้ดแบบ static มองไม่เห็น leak ใน SQL, feature store หรือ notebook ที่ไม่ได้ให้มันอ่าน และจะบอกตรง ๆ แทนที่จะสรุปว่าปลอดภัย
+- `eval-harness` เขียน runner ครอบโค้ดของเราเอง และจะถามก่อนใช้โควตา API ถ้าไม่มี credentials จะหยุดก่อนรัน baseline และบอกตรง ๆ ส่วน sign test ใช้กับผลแบบผ่าน/ตกเท่านั้น ใช้กับคะแนนไม่ได้
 - คะแนน eval มาจากการรันจำนวนไม่มาก ผลอาจต่างกันในแต่ละรอบ
 
 ## แผนต่อไป
 
-skill ที่ยังร่างอยู่ใน [`skills/in-progress/`](./skills/in-progress/) (ยังไม่ปล่อย): `eval-harness`, `rag-triage`, `backtest-honesty`, `model-card`
+skill ที่ยังร่างอยู่ใน [`skills/in-progress/`](./skills/in-progress/) (ยังไม่ปล่อย): `rag-triage`, `backtest-honesty`, `model-card`
 
 ## ร่วมพัฒนา
 
